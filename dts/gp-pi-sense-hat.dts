@@ -1,0 +1,23 @@
+// gp-pi-sense-hat
+/dts-v1/;
+/plugin/;
+
+/ {
+	compatible = "brcm,bcm2708", "brcm,bcm2709";
+
+	fragment@0 {
+		target = <&i2c1>;
+		__overlay__ {
+			#address-cells = <1>;
+			#size-cells = <0>;
+			status = "okay";
+
+			rpi-sense@46 {
+				compatible = "rpi,rpi-sense";
+				reg = <0x46>;
+				keys-int-gpios = <&gpio 23 1>;
+				status = "okay";
+			};
+		};
+	};
+};
